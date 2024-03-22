@@ -95,7 +95,7 @@ public class TaskManager {
     }
 
     public void updateTask(int id, Task task) {
-        if (tasks.containsKey(id)) {
+        if (task.getId() == id) {
             System.out.println("Задача: " + tasks.get(id).getName() + " - обновлена.");
             task.setId(id);
             tasks.put(task.getId(), task);
@@ -105,7 +105,7 @@ public class TaskManager {
     }
 
     public void updateEpic(int id, Epic epic) {
-        if (epics.containsKey(id)) {
+        if (epic.getId() == id) {
             System.out.println("Эпик: " + epics.get(id).getName() + " - обновлён.");
             ArrayList<Integer> newEpic = epics.get(id).getSubTaskEpicsId();
             epic.setSubTaskEpicsId(newEpic);
@@ -120,7 +120,7 @@ public class TaskManager {
     }
 
     public void updateSubTask(int id, SubTask subTask) {
-        if (subTasks.containsKey(id)) {
+        if (subTask.getId() == id) {
             System.out.println("Подзадача: " + subTasks.get(id).getName() + " - обновлена.");
             subTask.setId(id);
             subTasks.put(subTask.getId(), subTask);
