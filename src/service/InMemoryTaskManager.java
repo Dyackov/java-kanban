@@ -20,8 +20,7 @@ public class InMemoryTaskManager implements TaskManager {
         return new ArrayList<>(historyManager.getHistory());
     }
 
-    @Override
-    public int idGenerate() {
+    private int idGenerate() {
         return id++;
     }
 
@@ -58,6 +57,7 @@ public class InMemoryTaskManager implements TaskManager {
         subTasks.clear();
         for (Integer i : epics.keySet()) {
             epics.get(i).getSubTaskEpicsId().clear();
+            checkStatus(epics.get(i));
         }
         System.out.println("Все подзадачи эпиков удалены.");
     }
@@ -196,8 +196,7 @@ public class InMemoryTaskManager implements TaskManager {
         return subTasksList;
     }
 
-    @Override
-    public void checkStatus(Epic epic) {
+    private void checkStatus(Epic epic) {
         boolean isNew = false;
         boolean isInProgress = false;
         boolean isDone = false;

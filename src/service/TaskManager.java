@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface TaskManager {
-    int idGenerate();
 
     List<Task> getAllTasks();
 
@@ -48,8 +47,6 @@ public interface TaskManager {
     void deleteSubtaskById(int id);
 
     List<SubTask> getSubtasksForEpic(int idEpic);
-
-    void checkStatus(Epic epic);
 
     List<Task> getHistory();
 
