@@ -14,6 +14,18 @@ public class Task {
         this.status = status;
     }
 
+    public Task(String name, String description, int id, Status status) {
+        this.name = name;
+        this.description = description;
+        this.id = id;
+        this.status = status;
+    }
+
+    public Task(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
     public Task(String name) {
         this.name = name;
     }
@@ -65,9 +77,10 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Задача:" + name + '\'' +
-                " Описание задачи:" + description + '\'' +
-                " id:" + id + '\'' +
-                " Статус: " + status + "\n";
+        return "Задача:" + getName() + '\'' +
+                " Описание задачи:" + getDescription() + '\'' +
+                " id:" + getId() + '\'' +
+                " Статус: " + getStatus() + "\n";
     }
+
 }

@@ -5,23 +5,22 @@ import java.util.ArrayList;
 public class Epic extends Task {
     private ArrayList<Integer> subTaskEpicsId = new ArrayList<>();
 
-    public void setSubTaskEpicsId(ArrayList<Integer> subTaskEpicsId) {
-        this.subTaskEpicsId = subTaskEpicsId;
-    }
-
     public Epic(String name) {
         super(name);
         setStatus(Status.NEW);
     }
 
+    public Epic(String name, int id) {
+        super(name, id);
+    }
+
+    public void setSubTaskEpicsId(ArrayList<Integer> subTaskEpicsId) {
+        this.subTaskEpicsId = subTaskEpicsId;
+    }
+
     public ArrayList<Integer> getSubTaskEpicsId() {
-        return subTaskEpicsId;
+        return this.subTaskEpicsId;
     }
-
-    public void delletesubTaskEpicsId(int id) {
-        subTaskEpicsId.remove(id);
-    }
-
 
     @Override
     public String toString() {
@@ -29,4 +28,5 @@ public class Epic extends Task {
                 " id: " + getId() + '\'' +
                 " Статус: " + getStatus() + "\n";
     }
+
 }

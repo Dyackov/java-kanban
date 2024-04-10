@@ -8,6 +8,16 @@ public class SubTask extends Task {
         this.idEpic = idEpic;
     }
 
+    public SubTask(String name, String description, int id, Status status, int idEpic) {
+        super(name, description, id, status);
+        this.idEpic = idEpic;
+    }
+
+    public SubTask(String name, int idEpic) {
+        super(name);
+        this.idEpic = idEpic;
+    }
+
     public int getIdEpic() {
         return idEpic;
     }
@@ -23,5 +33,6 @@ public class SubTask extends Task {
                 " id: " + getId() + '\'' +
                 " Статус: " + getStatus() + "\n";
     }
+
 }
 
