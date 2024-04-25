@@ -173,45 +173,30 @@ class InMemoryTaskManagerTest {
         manager.updateSubTask(new SubTask("Обнов.Под задача 2", "Обнов.Описание подзадачи 2", 8,
                 Status.IN_PROGRESS, 5));
         assertEquals(manager.getByIdEpics(5).getStatus(), Status.IN_PROGRESS, "Статус не обновился.");
-
-
     }
 
-    @Test
-    public void deleteAllTaskTest() {
-        TaskManager deleteManager = Managers.getDefault();
+    @AfterAll
+    public static void deleteAllTaskTest() {
+        manager.deleteTaskById(1);
+        assertNull(manager.getByIdTasks(1), "Задача по ID не удалена.");
 
-        deleteManager.createTask(new Task("задача 1", "описание задачи 1", Status.NEW));
-        deleteManager.createTask(new Task("задача 2", "описание задачи 2", Status.DONE));
-        deleteManager.createTask(new Task("задача 3", "описание задачи 3", Status.IN_PROGRESS));
+        manager.deleteSubtaskById(7);
+        assertNull(manager.getByIdSubTasks(7), "Подзадача по ID не удалена.");
 
-        deleteManager.createEpic(new Epic("Эпик 1"));
-        deleteManager.createEpic(new Epic("Эпик 2"));
-        deleteManager.createEpic(new Epic("Эпик 3"));
+        manager.deleteEpicById(4);
+        assertNull(manager.getByIdEpics(4), "Эпик по ID не удалён.");
 
-        deleteManager.createSubtask(new SubTask("Под задача 1", "Описание подзадачи 1", Status.NEW, 4));
-        deleteManager.createSubtask(new SubTask("Под задача 2", "Описание подзадачи 2", Status.NEW, 5));
-        deleteManager.createSubtask(new SubTask("Под задача 3", "Описание подзадачи 3", Status.NEW, 6));
+        assertNotNull(manager.getAllTasks(), "Список задач пуст.");
+        manager.deleteAllTasks();
+        assertTrue(manager.getAllTasks().isEmpty(), "Задачи не удалены.");
 
-        deleteManager.deleteTaskById(1);
-        assertNull(deleteManager.getByIdTasks(1), "Задача по ID не удалена.");
+        assertNotNull(manager.getAllSubTask(), "Список подзадач пуст.");
+        manager.deleteAllSubTasks();
+        assertTrue(manager.getAllSubTask().isEmpty(), "Подзадачи не удалены");
 
-        deleteManager.deleteSubtaskById(7);
-        assertNull(deleteManager.getByIdSubTasks(7), "Подзадача по ID не удалена.");
-
-        deleteManager.deleteEpicById(4);
-        assertNull(deleteManager.getByIdEpics(4), "Эпик по ID не удалён.");
-
-        assertNotNull(deleteManager.getAllTasks(), "Список задач пуст.");
-        deleteManager.deleteAllTasks();
-        assertTrue(deleteManager.getAllTasks().isEmpty(), "Задачи не удалены.");
-
-        assertNotNull(deleteManager.getAllSubTask(), "Список подзадач пуст.");
-        deleteManager.deleteAllSubTasks();
-        assertTrue(deleteManager.getAllSubTask().isEmpty(), "Подзадачи не удалены");
-
-        assertNotNull(deleteManager.getAllEpics(), "Список эпиков пуст.");
-        deleteManager.deleteAllEpics();
-        assertTrue(deleteManager.getAllEpics().isEmpty(), "Эпики не удалены.");
+        assertNotNull(manager.getAllEpics(), "Список эпиков пуст.");
+        manager.deleteAllEpics();
+        assertTrue(manager.getAllEpics().isEmpty(), "Эпики не удалены.");
     }
+
 }

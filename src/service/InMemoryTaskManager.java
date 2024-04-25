@@ -41,21 +41,12 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void deleteAllTasks() {
-        for (Task task : tasks.values()) {
-            historyManager.remove(task.getId());
-        }
         tasks.clear();
         System.out.println("Все задачи удалены.");
     }
 
     @Override
     public void deleteAllEpics() {
-        for (SubTask subTask : subTasks.values()) {
-            historyManager.remove(subTask.getId());
-        }
-        for (Epic epic : epics.values()) {
-            historyManager.remove(epic.getId());
-        }
         subTasks.clear();
         epics.clear();
         System.out.println("Все эпики, а так же подзадачи относящиеся к ним подзадачи удалены.");
@@ -63,10 +54,6 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void deleteAllSubTasks() {
-        for (SubTask subTask : subTasks.values()) {
-            historyManager.remove(subTask.getId());
-        }
-
         subTasks.clear();
         for (Integer i : epics.keySet()) {
             epics.get(i).getSubTaskEpicsId().clear();
@@ -160,7 +147,6 @@ public class InMemoryTaskManager implements TaskManager {
         } else {
             System.out.println("Введенный вами id - " + id + ", в Задачах отсутствует. Возможные варианты ID - " + subTasks.keySet());
         }
-        historyManager.remove(id);
     }
 
     @Override
@@ -176,7 +162,6 @@ public class InMemoryTaskManager implements TaskManager {
         } else {
             System.out.println("Введенный вами id - " + id + ", в Эпиках отсутствует.");
         }
-        historyManager.remove(id);
     }
 
     @Override
@@ -199,7 +184,6 @@ public class InMemoryTaskManager implements TaskManager {
         } else {
             System.out.println("Введенный вами id - " + id + ", в Подзадачах отсутствует.");
         }
-        historyManager.remove(id);
     }
 
     @Override
@@ -212,7 +196,7 @@ public class InMemoryTaskManager implements TaskManager {
         return subTasksList;
     }
 
-    public void checkStatus(Epic epic) {
+    private void checkStatus(Epic epic) {
         boolean isNew = false;
         boolean isInProgress = false;
         boolean isDone = false;
