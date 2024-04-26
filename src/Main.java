@@ -34,14 +34,20 @@ public class Main {
         manager.getByIdTasks(3);
 
         manager.getByIdEpics(4);
+        manager.getByIdEpics(4);
         manager.getByIdEpics(5);
+        manager.getByIdEpics(6);
         manager.getByIdEpics(6);
 
         manager.getByIdSubTasks(7);
+        manager.getByIdSubTasks(7);
         manager.getByIdSubTasks(8);
         manager.getByIdSubTasks(9);
+        manager.getByIdSubTasks(9);
 
+        manager.deleteAllTasks();
         manager.deleteAllSubTasks();
+        manager.deleteAllEpics();
 
         System.out.println(manager.getHistory());
 
