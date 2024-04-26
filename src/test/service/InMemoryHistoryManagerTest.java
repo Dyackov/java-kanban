@@ -7,8 +7,6 @@ import model.Task;
 import org.junit.jupiter.api.Test;
 import service.HistoryManager;
 import service.Managers;
-import service.Node;
-import service.TaskManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InMemoryHistoryManagerTest {
     static HistoryManager historyManager = Managers.getDefaultHistory();
-    static TaskManager manager = Managers.getDefault();
+
 
     @Test
     void addHistoryTest() {
