@@ -1,12 +1,10 @@
-package test.service;
+package service;
 
 import model.Epic;
 import model.Status;
 import model.SubTask;
 import model.Task;
 import org.junit.jupiter.api.Test;
-import service.HistoryManager;
-import service.Managers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InMemoryHistoryManagerTest {
     static HistoryManager historyManager = Managers.getDefaultHistory();
-
 
     @Test
     void addHistoryTest() {
