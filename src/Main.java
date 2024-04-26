@@ -41,12 +41,7 @@ public class Main {
         manager.getByIdSubTasks(8);
         manager.getByIdSubTasks(9);
 
-//        manager.deleteEpicById(1);
-//        manager.deleteEpicById(4);
-//        manager.deleteSubtaskById(7);
-
         manager.deleteAllSubTasks();
-
 
         System.out.println(manager.getHistory());
 
