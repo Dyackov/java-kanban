@@ -1,12 +1,10 @@
-package test.service;
+package service;
 
 import model.Epic;
 import model.Status;
 import model.SubTask;
 import model.Task;
 import org.junit.jupiter.api.*;
-import service.Managers;
-import service.TaskManager;
 
 import java.util.ArrayList;
 import java.util.List;
