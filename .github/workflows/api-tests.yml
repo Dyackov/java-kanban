@@ -1,4 +1,4 @@
-nameTask: Java Tests
+name: Java Tests
 
 on:
   pull_request:
