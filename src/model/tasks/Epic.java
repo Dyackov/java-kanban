@@ -1,4 +1,7 @@
-package model;
+package model.tasks;
+
+import model.enums.Status;
+import model.enums.Type;
 
 import java.util.ArrayList;
 
@@ -27,6 +30,10 @@ public class Epic extends Task {
         return "Эпик:" + getName() + '\'' +
                 " id: " + getId() + '\'' +
                 " Статус: " + getStatus() + "\n";
+    }
+
+    public Type getType() {
+        return Type.EPIC;
     }
 
 }

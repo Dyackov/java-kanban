@@ -1,10 +1,11 @@
-package service;
+package service.managers;
 
-import model.Epic;
-import model.Status;
-import model.SubTask;
-import model.Task;
+import model.tasks.Epic;
+import model.enums.Status;
+import model.tasks.SubTask;
+import model.tasks.Task;
 import org.junit.jupiter.api.*;
+import service.interfaces.TaskManager;
 
 import java.util.ArrayList;
 import java.util.List;
