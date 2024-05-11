@@ -11,7 +11,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 public class FileBackedTaskManager extends InMemoryTaskManager {
-    File file;
+    private File file;
 
     public FileBackedTaskManager(File file) {
         this.file = file;
