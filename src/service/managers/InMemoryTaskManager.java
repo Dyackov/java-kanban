@@ -1,18 +1,20 @@
-package service;
+package service.managers;
 
-import model.Epic;
-import model.Status;
-import model.SubTask;
-import model.Task;
+import model.tasks.Epic;
+import model.enums.Status;
+import model.tasks.SubTask;
+import model.tasks.Task;
+import service.interfaces.HistoryManager;
+import service.interfaces.TaskManager;
 
 import java.util.*;
 import java.util.List;
 
 public class InMemoryTaskManager implements TaskManager {
-    private Map<Integer, Task> tasks = new HashMap<>();
-    private Map<Integer, SubTask> subTasks = new HashMap<>();
-    private Map<Integer, Epic> epics = new HashMap<>();
-    private int id = 1;
+    protected Map<Integer, Task> tasks = new HashMap<>();
+    protected Map<Integer, SubTask> subTasks = new HashMap<>();
+    protected Map<Integer, Epic> epics = new HashMap<>();
+    protected int id = 1;
     HistoryManager historyManager = Managers.getDefaultHistory();
 
     @Override
@@ -20,7 +22,7 @@ public class InMemoryTaskManager implements TaskManager {
         return new ArrayList<>(historyManager.getHistory());
     }
 
-    private int idGenerate() {
+    protected int idGenerate() {
         return id++;
     }
 

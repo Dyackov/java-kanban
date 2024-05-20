@@ -1,4 +1,7 @@
-package model;
+package model.tasks;
+
+import model.enums.Status;
+import model.enums.Type;
 
 public class SubTask extends Task {
     private int idEpic;
@@ -24,6 +27,10 @@ public class SubTask extends Task {
 
     public void setIdEpic(int id) {
         idEpic = id;
+    }
+
+    public Type getType() {
+        return Type.SUBTASK;
     }
 
     @Override

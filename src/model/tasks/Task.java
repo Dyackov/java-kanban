@@ -1,4 +1,7 @@
-package model;
+package model.tasks;
+
+import model.enums.Status;
+import model.enums.Type;
 
 import java.util.Objects;
 
@@ -56,6 +59,10 @@ public class Task {
 
     public Status getStatus() {
         return status;
+    }
+
+    public Type getType() {
+        return Type.TASK;
     }
 
     public void setStatus(Status status) {
