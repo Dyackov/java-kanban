@@ -19,5 +19,4 @@ class ManagersTest {
         HistoryManager manager = Managers.getDefaultHistory();
         assertNotNull(manager);
     }
-
 }

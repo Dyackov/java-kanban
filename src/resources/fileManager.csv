@@ -1,1 +1,5 @@
-id,type,name,status,description,epic
+id,type,name,status,description,epic,startTime,duration
+4,TASK,задача 1,NEW,описание задачи 1
+1,EPIC,Эпик 2222 (ИД &),IN_PROGRESS
+2,SUBTASK,суб2,IN_PROGRESS,опис.суб2,1,2024-01-05T01:30,PT30M
+3,SUBTASK,подзадача 11,NEW,описание 11,1

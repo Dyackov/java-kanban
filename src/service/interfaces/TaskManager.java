@@ -7,6 +7,7 @@ import model.tasks.Task;
 import java.util.List;
 
 public interface TaskManager {
+    List<Task> getPrioritizedTasks();
 
     List<Task> getAllTasks();
 
@@ -47,5 +48,4 @@ public interface TaskManager {
     List<SubTask> getSubtasksForEpic(int idEpic);
 
     List<Task> getHistory();
-
 }
