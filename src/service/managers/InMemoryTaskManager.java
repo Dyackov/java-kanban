@@ -145,16 +145,12 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void createTask(Task task) {
         task.setId(idGenerate());
-
-        if (task.getStartTime() == null) {
-            tasks.put(task.getId(), task);
-        }
         if (task.getStartTime() != null) {
             if (startCheckTaskOverlap(task)) {
                 taskSet.add(task);
-                tasks.put(task.getId(), task);
             }
         }
+        tasks.put(task.getId(), task);
     }
 
     @Override
