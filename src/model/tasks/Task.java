@@ -15,14 +15,12 @@ public class Task {
     private Duration duration;
     private LocalDateTime startTime;
 
-
     public Task(int id, String name, Status status) {
         this.id = id;
         this.name = name;
         this.status = status;
     }
 
-    // для Main с датой
     public Task(String name, String description, Status status, LocalDateTime startTime, Duration duration) {
         this.name = name;
         this.description = description;
@@ -31,7 +29,6 @@ public class Task {
         this.duration = duration;
     }
 
-    // для FileBackedTaskManager c Датой
     public Task(int id, String name, Status status, String description, LocalDateTime startTime, Duration duration) {
         this.name = name;
         this.description = description;
@@ -41,7 +38,6 @@ public class Task {
         this.id = id;
     }
 
-    // для FileBackedTaskManager без Даты
     public Task(int id, String name, Status status, String description) {
         this.name = name;
         this.description = description;

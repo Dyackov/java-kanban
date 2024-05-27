@@ -9,19 +9,16 @@ import java.time.LocalDateTime;
 public class SubTask extends Task {
     private int idEpic;
 
-    // для FileBackedTaskManager c Датой
     public SubTask(int id, String name, Status status, String description, int idEpic, LocalDateTime startTime, Duration duration) {
         super(id, name, status, description, startTime, duration);
         this.idEpic = idEpic;
     }
 
-    // для FileBackedTaskManager без Даты
     public SubTask(int id, String name, Status status, String description, int idEpic) {
         super(name, description, id, status);
         this.idEpic = idEpic;
     }
 
-    // для Main
     public SubTask(String name, String description, Status status, int idEpic, LocalDateTime startTime, Duration duration) {
         super(name, description, status, startTime, duration);
         this.idEpic = idEpic;
