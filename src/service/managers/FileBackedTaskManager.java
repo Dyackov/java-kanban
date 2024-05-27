@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 
 public class FileBackedTaskManager extends InMemoryTaskManager {
     private final File file;
+    private static final int TASK_WITH_TIME_LENGTH = 6;
 
     public FileBackedTaskManager(File file) {
         this.file = file;
@@ -99,7 +100,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         String[] taskSplit = value.split(",");
 
         if (Type.TASK == Type.valueOf(taskSplit[1])) {
-            if (taskSplit.length > 6) {
+            if (taskSplit.length > TASK_WITH_TIME_LENGTH) {
                 return new Task(Integer.parseInt(taskSplit[0]), taskSplit[2], Status.valueOf(taskSplit[3]), taskSplit[4],
                         LocalDateTime.parse(taskSplit[5]), Duration.parse(taskSplit[6]));
             }
@@ -111,7 +112,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         }
 
         if (Type.SUBTASK == Type.valueOf(taskSplit[1])) {
-            if (taskSplit.length > 6) {
+            if (taskSplit.length > TASK_WITH_TIME_LENGTH) {
                 return new SubTask(Integer.parseInt(taskSplit[0]), taskSplit[2], Status.valueOf(taskSplit[3]),
                         taskSplit[4], Integer.parseInt(taskSplit[5]), LocalDateTime.parse(taskSplit[6]),
                         Duration.parse(taskSplit[7]));
