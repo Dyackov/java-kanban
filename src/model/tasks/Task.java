@@ -3,6 +3,8 @@ package model.tasks;
 import model.enums.Status;
 import model.enums.Type;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Task {
@@ -10,6 +12,38 @@ public class Task {
     private String description;
     private int id;
     private Status status;
+    private Duration duration;
+    private LocalDateTime startTime;
+
+    public Task(int id, String name, Status status) {
+        this.id = id;
+        this.name = name;
+        this.status = status;
+    }
+
+    public Task(String name, String description, Status status, LocalDateTime startTime, Duration duration) {
+        this.name = name;
+        this.description = description;
+        this.status = status;
+        this.startTime = startTime;
+        this.duration = duration;
+    }
+
+    public Task(int id, String name, Status status, String description, LocalDateTime startTime, Duration duration) {
+        this.name = name;
+        this.description = description;
+        this.status = status;
+        this.startTime = startTime;
+        this.duration = duration;
+        this.id = id;
+    }
+
+    public Task(int id, String name, Status status, String description) {
+        this.name = name;
+        this.description = description;
+        this.status = status;
+        this.id = id;
+    }
 
     public Task(String name, String description, Status status) {
         this.name = name;
@@ -31,6 +65,30 @@ public class Task {
 
     public Task(String name) {
         this.name = name;
+    }
+
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        if (duration == null) {
+            throw new NullPointerException("Ошибка. Длительность равна 0.");
+        }
+        this.duration = duration;
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalDateTime getEndTime() {
+        return startTime.plus(duration);
     }
 
     public String getName() {

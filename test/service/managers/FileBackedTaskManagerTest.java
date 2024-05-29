@@ -5,6 +5,7 @@ import model.tasks.Epic;
 import model.enums.Status;
 import model.tasks.SubTask;
 import model.tasks.Task;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -14,12 +15,22 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FileBackedTaskManagerTest {
+class FileBackedTaskManagerTest extends TaskManagerTest<FileBackedTaskManager> {
+
+    @BeforeEach
+    void setUp() {
+        try {
+            File file = File.createTempFile("testBackend", ".tmp");
+            manager = new FileBackedTaskManager(file);
+        } catch (IOException e) {
+            System.out.println("Ошибка создания файла");
+        }
+    }
 
     @Test
     void loadFromFileTest() {
         try {
-            File file = File.createTempFile("test", "csv");
+            File file = File.createTempFile("fileManager", "csv");
             FileBackedTaskManager fileBackedTaskManager = new FileBackedTaskManager(file);
 
             fileBackedTaskManager.createTask(new Task("задача 1", "описание задачи 1", Status.NEW));
@@ -51,7 +62,7 @@ class FileBackedTaskManagerTest {
             fileBackedTaskManager.createSubtask(new SubTask("Под задача 7", "Описание подзадачи 1", Status.NEW, 2));
 
             List<String> expected = new ArrayList<>();
-            expected.add("id,type,name,status,description,epic");
+            expected.add("id,type,name,status,description,epic,startTime,duration");
             expected.add("1,TASK,задача 1,NEW,описание задачи 1");
             expected.add("2,EPIC,Эпик 4,NEW");
             expected.add("3,SUBTASK,Под задача 7,NEW,Описание подзадачи 1,2");
