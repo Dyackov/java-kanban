@@ -142,10 +142,11 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Задача:" + getName() + '\'' +
-                " Описание задачи:" + getDescription() + '\'' +
-                " id:" + getId() + '\'' +
-                " Статус: " + getStatus() + "\n";
+        return "Задача: " + getName() + "\n" +
+                " id: " + getId() + "\n" +
+                " Описание: " + getDescription() + "\n" +
+                " Статус: " + getStatus() + "\n" +
+                " Время начала: " + getStartTime() + "\n" +
+                " Продолжительность: " + getDuration();
     }
-
 }
