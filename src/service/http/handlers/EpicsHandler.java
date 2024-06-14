@@ -3,7 +3,7 @@ package service.http.handlers;
 import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import exception.NullException;
+import exception.TaskNotFoundException;
 import exception.TimeOverlapException;
 import model.enums.Endpoint;
 import model.tasks.Epic;
@@ -58,7 +58,7 @@ public class EpicsHandler extends BaseHttpHandler implements HttpHandler {
             System.out.println("Началась обработка " + exchange.getRequestMethod() + " /" + path[1] + "/" + path[2] + "/" + path[3] + " запроса от клиента.");
             try {
                 sendText(exchange, gson.toJson(manager.getSubtasksForEpic(Integer.parseInt(path[2]))));
-            } catch (NullException nullException) {
+            } catch (TaskNotFoundException nullException) {
                 sendNotFound(exchange, "Эпика с ID - " + path[2] + " не существует.");
             }
         }
@@ -82,7 +82,7 @@ public class EpicsHandler extends BaseHttpHandler implements HttpHandler {
                 epic.setId(Integer.parseInt(path[2]));
                 manager.updateEpic(epic);
                 sendNoText(exchange);
-            } catch (NullException nullException) {
+            } catch (TaskNotFoundException nullException) {
                 sendNotFound(exchange, "Эпика с ID - " + path[2] + " не существует.");
             }
         }
@@ -94,7 +94,7 @@ public class EpicsHandler extends BaseHttpHandler implements HttpHandler {
         try {
             manager.deleteEpicById(Integer.parseInt(path[2]));
             sendText(exchange, "Задача удалена.");
-        } catch (NullException nullException) {
+        } catch (TaskNotFoundException nullException) {
             sendNotFound(exchange, "Эпика с ID - " + path[2] + " не существует.");
         }
     }

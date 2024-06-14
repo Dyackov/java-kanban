@@ -1,6 +1,6 @@
 package service.managers;
 
-import exception.NullException;
+import exception.TaskNotFoundException;
 import exception.TimeOverlapException;
 import model.tasks.Epic;
 import model.enums.Status;
@@ -206,7 +206,7 @@ public class InMemoryTaskManager implements TaskManager {
             }
             tasks.put(task.getId(), task);
         } else {
-            throw new NullException(" ID - " + task.getId() + ", в Задачах отсутствует");
+            throw new TaskNotFoundException(" ID - " + task.getId() + ", в Задачах отсутствует");
         }
     }
 
@@ -219,7 +219,7 @@ public class InMemoryTaskManager implements TaskManager {
             checkStatus(epic);
             epics.put(epic.getId(), epic);
         } else {
-            throw new NullException(" ID - " + epic.getId() + ", в Эпиках отсутствует.");
+            throw new TaskNotFoundException(" ID - " + epic.getId() + ", в Эпиках отсутствует.");
         }
     }
 
@@ -242,7 +242,7 @@ public class InMemoryTaskManager implements TaskManager {
             }
             subTasks.put(subTask.getId(), subTask);
         } else {
-            throw new NullException(" ID - " + subTask.getId() + ", в Задачах отсутствует");
+            throw new TaskNotFoundException(" ID - " + subTask.getId() + ", в Задачах отсутствует");
         }
     }
 
@@ -255,7 +255,7 @@ public class InMemoryTaskManager implements TaskManager {
             tasks.remove(id);
             historyManager.remove(id);
         } else {
-            throw new NullException(" ID - " + id + ", в Задачах отсутствует.");
+            throw new TaskNotFoundException(" ID - " + id + ", в Задачах отсутствует.");
         }
     }
 
@@ -268,7 +268,7 @@ public class InMemoryTaskManager implements TaskManager {
             }
             epics.remove(id);
         } else {
-            throw new NullException(" ID - " + id + ", в Эпиках отсутствует.");
+            throw new TaskNotFoundException(" ID - " + id + ", в Эпиках отсутствует.");
         }
         historyManager.remove(id);
     }
@@ -287,7 +287,7 @@ public class InMemoryTaskManager implements TaskManager {
             subTasks.remove(id);
             checkStatus(epic);
         } else {
-            throw new NullException(" ID - " + id + ", в Подзадачах отсутствует.");
+            throw new TaskNotFoundException(" ID - " + id + ", в Подзадачах отсутствует.");
         }
         historyManager.remove(id);
     }
@@ -300,7 +300,7 @@ public class InMemoryTaskManager implements TaskManager {
                     .map(subTasks::get)
                     .collect(Collectors.toList());
         } else {
-            throw new NullException("Эпика с ID - " + idEpic + " не существует.");
+            throw new TaskNotFoundException("Эпика с ID - " + idEpic + " не существует.");
         }
     }
 

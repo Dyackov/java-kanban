@@ -3,7 +3,7 @@ package service.http.handlers;
 import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import exception.NullException;
+import exception.TaskNotFoundException;
 import exception.TimeOverlapException;
 import model.enums.Endpoint;
 import model.tasks.SubTask;
@@ -81,7 +81,7 @@ public class SubtasksHandler extends BaseHttpHandler implements HttpHandler {
                 sendNoText(exchange);
             } catch (TimeOverlapException timeOverlapException) {
                 sendHasInteractions(exchange, timeOverlapException.getMessage());
-            } catch (NullException nullException) {
+            } catch (TaskNotFoundException nullException) {
                 sendNotFound(exchange, "Подзадачи с ID - " + path[2] + " не существует.");
             }
         }
@@ -93,7 +93,7 @@ public class SubtasksHandler extends BaseHttpHandler implements HttpHandler {
         try {
             manager.deleteSubtaskById(Integer.parseInt(path[2]));
             sendText(exchange, "Задача удалена.");
-        } catch (NullException nullException) {
+        } catch (TaskNotFoundException nullException) {
             sendNotFound(exchange, "Задачи с ID - " + path[2] + " не существует.");
         }
     }
