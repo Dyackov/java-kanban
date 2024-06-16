@@ -44,7 +44,10 @@ public class Epic extends Task {
     public String toString() {
         return "Эпик:" + getName() + '\'' +
                 " id: " + getId() + '\'' +
-                " Статус: " + getStatus() + "\n";
+                " Статус: " + getStatus() + "\n" +
+                " Время начала: " + getStartTime() + "\n" +
+                " Продолжительность: " + getDuration() +
+                " Окончание времени: " + getEndTime();
     }
 
     public Type getType() {
